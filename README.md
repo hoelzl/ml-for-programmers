@@ -1,10 +1,12 @@
-# ml-for-programmers
+# Machine Learning for Programmers
 
-Add a short description here!
+Source code and other material for the course "Machine Learning for Python
+Programmers".
 
 ## Description
 
-A longer description of your project goes here...
+This repository contains both the source code used during the lectures as well
+as templates and solutions for exercises.
 
 ## Installation
 
