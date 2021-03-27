@@ -3,9 +3,9 @@ channels:
   - defaults
   - conda-forge
   - pytorch
-  # - fastai
+  - fastai
 dependencies:
-  - python>=3.6
+  - python>=3.8
   - pip
   # BASICS
   - numpy
@@ -21,14 +21,16 @@ dependencies:
   # - yellowbrick
   # ML, STATS & DEEP LEARNING
   # - statsmodels
-  # - scikit-learn
+  - scikit-learn
   # - sktime
   # - tslearn
   # - xgboost
   # - catboost
   # - lightgbm
-  # - pytorch
-  # - fastai  # activate fastai channel above!
+  - cudatoolkit>=11.1
+  - cudnn
+  - pytorch
+  - fastai  # activate fastai channel above!
   # - tensorflow
   # - keras
   # - spacy
@@ -46,6 +48,8 @@ dependencies:
      # - neptune-contrib
 
   # DEVELOPMENT ONLY PACKAGES (could also be kept in a separate environment file)
+  - ipykernel
+  - jupyter
   - jupyterlab
   - pytest
   - pytest-cov
@@ -55,3 +59,4 @@ dependencies:
   - nbstripout
   - sphinx
   - recommonmark
+  - setuptools
