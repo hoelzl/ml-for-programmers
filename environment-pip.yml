@@ -8,8 +8,8 @@ channels:
 dependencies:
   - cudatoolkit>=11
   - python>=3.8
-  - pytorch>=1.6
-  - torchvision
+  - pytorch>=1.7,<1.8
+  - torchvision>=0.8,<0.9
   - pip
   - pip:
     - fastai>=2.2
