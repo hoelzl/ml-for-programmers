@@ -2,7 +2,6 @@ name: ml-for-programmers
 channels:
   - fastai
   - pytorch
-  - conda-forge
   - defaults
   - mhoelzl
 dependencies:
@@ -16,6 +15,7 @@ dependencies:
     - fastapi
     - fastbook
     - graphviz
+    - ipykernel
     - ipython
     - ipywidgets
     - matplotlib
@@ -31,17 +31,17 @@ dependencies:
     - streamlit
     - -e .  # install git checkout of ml-for-programmers in editable mode
 
-  # DEVELOPMENT ONLY PACKAGES (could also be kept in a separate environment file)
-  - black
-  - ipykernel
-  - jupyter
-  - pytest
-  - pytest-cov
-  - tox
-  - pre_commit
-  - nbdime
-  - nbstripout
-  - sphinx
-  - recommonmark
-  - rope
-  - setuptools
+    # DEVELOPMENT ONLY PACKAGES (could also be kept in a separate environment file)
+    - black
+    - ipykernel
+    - jupyter
+    - pytest
+    - pytest-cov
+    - tox
+    - pre_commit
+    - nbdime
+    - nbstripout
+    - sphinx
+    - recommonmark
+    - rope
+    - setuptools
