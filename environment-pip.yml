@@ -6,6 +6,8 @@ channels:
   - mhoelzl
 dependencies:
   - cudatoolkit>=11
+  - ipykernel
+  - ipython
   - python>=3.8
   - pytorch>=1.7,<1.8
   - torchvision>=0.8,<0.9
@@ -15,8 +17,6 @@ dependencies:
     - fastapi
     - fastbook
     - graphviz
-    - ipykernel
-    - ipython
     - ipywidgets
     - matplotlib
     - nbdev>=0.2.12
