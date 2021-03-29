@@ -12,12 +12,17 @@ as templates and solutions for exercises.
 
 In order to set up the necessary environment:
 
-1. review and uncomment what you need in `environment.yml` and create an
+1. review and uncomment what you need in `environment-pip.yml` and create an
    environment `ml-for-programmers` with the help of [conda]:
 
    ```bash
-   conda env create -f environment.yml
+   conda env create -f environment-pip.yml
    ```
+
+   **Do not currently use the `environment.yml` file!** Installing from
+   `environment.yml` has the potential to introduce subtle incompatibilities in
+   the resulting environment that lead to wrong predictions / evaluations from
+   the fastai utilities.
 
 2. activate the new environment with:
 
@@ -25,8 +30,9 @@ In order to set up the necessary environment:
    conda activate ml-for-programmers
    ```
 
-> **_NOTE:_**  The conda environment will have ml-for-programmers installed in editable mode.
-> Some changes, e.g. in `setup.cfg`, might require you to run `pip install -e .` again.
+> **_NOTE:_**  The conda environment will have ml-for-programmers installed in
+> editable mode. Some changes, e.g. in `setup.cfg`, might require you to run
+> `pip install -e .` again.
 
 Optional and needed only once after `git clone`:
 
@@ -39,7 +45,9 @@ Optional and needed only once after `git clone`:
    ```
 
    and checkout the configuration under `.pre-commit-config.yaml`.
-   The `-n, --no-verify` flag of `git commit` can be used to deactivate pre-commit hooks temporarily.
+
+   The `-n, --no-verify` flag of `git commit` can be used to deactivate
+   pre-commit hooks temporarily.
 
 <!-- markdownlint-disable-next-line -->
 4. install [nbstripout] git hooks to remove the output cells of committed notebooks with:
@@ -55,10 +63,11 @@ Then take a look into the `scripts` and `notebooks` folders.
 
 ## Dependency Management & Reproducibility
 
-1. Always keep your abstract (unpinned) dependencies updated in `environment.yml` and eventually
-   in `setup.cfg` if you want to ship and install your package via `pip` later on.
-2. Create concrete dependencies as `environment.lock.yml` for the exact reproduction of your
-   environment with:
+1. Always keep your abstract (unpinned) dependencies updated in
+   `environment-pip.yml` and eventually in `setup.cfg` if you want to ship and
+   install your package via `pip` later on.
+2. Create concrete dependencies as `environment.lock.yml` for the exact
+   reproduction of your environment with:
 
    ```bash
    conda env export -n ml-for-programmers -f environment.lock.yml
@@ -80,7 +89,7 @@ Then take a look into the `scripts` and `notebooks` folders.
 ├── README.md               <- The top-level README for developers.
 ├── configs                 <- Directory for configurations of model & application.
 ├── docs                    <- Directory for Sphinx documentation in rst or md.
-├── environment.yml         <- The conda environment file for reproducibility.
+├── environment-pip.yml         <- The conda environment file for reproducibility.
 ├── notebooks               <- Jupyter notebooks. Naming convention is a number (for
 │                              ordering), the creator's initials and a description,
 │                              e.g. `1.0-fw-initial-data-exploration`.

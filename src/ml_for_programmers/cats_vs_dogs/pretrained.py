@@ -32,7 +32,9 @@ def is_cat(filename: str) -> bool:
     In the dataset we are using this is indicated by the first letter of the
     filename; cats are labeled with uppercase letters, dogs with lowercase ones.
     """
-    return filename[0].isupper()
+    result = filename[0].isupper()
+    # print(f"File: {filename}, initial: '{filename[0]}', result: {result}")
+    return result
 
 
 # %%
@@ -54,14 +56,17 @@ def create_dataloaders() -> DataLoaders:
 
 # %%
 if session.is_interactive:
-    dls = create_dataloaders()
+    _dls = create_dataloaders()
 else:
-    dls = None
+    _dls = None
 
 
 # %%
-def train_model(dls: DataLoaders) -> Learner:
+def train_model() -> Learner:
+    dls = create_dataloaders()
     learner = cnn_learner(dls, resnet34, metrics=[error_rate, accuracy])
+    new_dls = create_dataloaders()
+    learner.dls = new_dls
     with learner.no_bar():
         learner.fine_tune(1)
     return learner
@@ -69,7 +74,7 @@ def train_model(dls: DataLoaders) -> Learner:
 
 # %%
 if session.is_interactive:
-    learner = train_model(dls)
+    learner = train_model()
 
 
 # %%
@@ -77,18 +82,16 @@ model_file_path = config.model_dir_path / "cats-vs-dogs.pth"
 
 # %%
 if session.is_interactive:
-    learner.export(model_file_path)
-
-# %%
-if session.is_interactive:
+    learner.dls.show_batch()
     learner.show_results()
 
 # %%
 if session.is_interactive:
+    learner.export(model_file_path)
+
+# %%
+if session.is_interactive:
     loaded_learner = load_learner(model_file_path)
-    # for callback in loaded_learner.cbs:
-    #     if isinstance(callback, ProgressCallback):
-    #         learner.remove_cb(callback)
 
 
 # %%
