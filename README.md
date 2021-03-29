@@ -81,8 +81,6 @@ Then take a look into the `scripts` and `notebooks` folders.
 ├── configs                 <- Directory for configurations of model & application.
 ├── docs                    <- Directory for Sphinx documentation in rst or md.
 ├── environment.yml         <- The conda environment file for reproducibility.
-├── models                  <- Trained and serialized models, model predictions,
-│                              or model summaries.
 ├── notebooks               <- Jupyter notebooks. Naming convention is a number (for
 │                              ordering), the creator's initials and a description,
 │                              e.g. `1.0-fw-initial-data-exploration`.
@@ -96,11 +94,13 @@ Then take a look into the `scripts` and `notebooks` folders.
 |                              or create a distribution with `python setup.py bdist_wheel`.
 ├── src
 │   └── ml_for_programmers  <- Actual Python package where the main functionality goes.
-│       └── data            <- Data used by the package
-│           ├── external    <- Data from third party sources.
-│           ├── interim     <- Intermediate data that has been transformed.
-│           ├── processed   <- The final, canonical data sets for modeling.
-│           └── raw         <- The original, immutable data dump.
+│       ├── data            <- Data used by the package
+│       │    ├── external    <- Data from third party sources.
+│       │    ├── interim     <- Intermediate data that has been transformed.
+│       │    ├── processed   <- The final, canonical data sets for modeling.
+│       │    └── raw         <- The original, immutable data dump.
+│       └── models           <- Trained and serialized models, model predictions,
+│                               or model summaries.
 ├── tests                   <- Unit tests which can be run with `py.test`.
 ├── .coveragerc             <- Configuration for coverage reports of unit tests.
 ├── .isort.cfg              <- Configuration for git hook that sorts imports.
