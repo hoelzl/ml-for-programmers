@@ -12,19 +12,18 @@ as templates and solutions for exercises.
 
 In order to set up the necessary environment:
 
-1. review and uncomment what you need in `environment-pip.yml` and create an
-   environment `ml-for-programmers` with the help of [conda]:
+1. Create an environment `ml-for-programmers` with the help of [conda]:
 
    ```bash
-   conda env create -f environment-pip.yml
+   conda env create -f environment.yml
    ```
 
-   **Do not currently use the `environment.yml` file!** Installing from
-   `environment.yml` has the potential to introduce subtle incompatibilities in
-   the resulting environment that lead to wrong predictions / evaluations from
-   the fastai utilities.
+   If you are on Windows, use the file `environment-win.yml` instead to create
+   an environment that contains the support for traditional machine learning
+   without support for PyTorch/fastai, since the latter libraries are unlikely
+   to install without problems.
 
-2. activate the new environment with:
+2. Activate the new environment with:
 
    ```bash
    conda activate ml-for-programmers
@@ -37,7 +36,7 @@ In order to set up the necessary environment:
 Optional and needed only once after `git clone`:
 
 <!-- markdownlint-disable-next-line -->
-3. install several [pre-commit] git hooks with:
+3. Install several [pre-commit] git hooks with:
 
    ```bash
    pre-commit install
@@ -50,7 +49,7 @@ Optional and needed only once after `git clone`:
    pre-commit hooks temporarily.
 
 <!-- markdownlint-disable-next-line -->
-4. install [nbstripout] git hooks to remove the output cells of committed notebooks with:
+4. Install [nbstripout] git hooks to remove the output cells of committed notebooks with:
 
    ```bash
    nbstripout --install --attributes notebooks/.gitattributes
@@ -64,7 +63,7 @@ Then take a look into the `scripts` and `notebooks` folders.
 ## Dependency Management & Reproducibility
 
 1. Always keep your abstract (unpinned) dependencies updated in
-   `environment-pip.yml` and eventually in `setup.cfg` if you want to ship and
+   `environment.yml` and eventually in `setup.cfg` if you want to ship and
    install your package via `pip` later on.
 2. Create concrete dependencies as `environment.lock.yml` for the exact
    reproduction of your environment with:
@@ -89,7 +88,7 @@ Then take a look into the `scripts` and `notebooks` folders.
 ├── README.md               <- The top-level README for developers.
 ├── configs                 <- Directory for configurations of model & application.
 ├── docs                    <- Directory for Sphinx documentation in rst or md.
-├── environment-pip.yml         <- The conda environment file for reproducibility.
+├── environment.yml         <- The conda environment file for reproducibility.
 ├── notebooks               <- Jupyter notebooks. Naming convention is a number (for
 │                              ordering), the creator's initials and a description,
 │                              e.g. `1.0-fw-initial-data-exploration`.

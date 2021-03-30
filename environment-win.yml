@@ -1,7 +1,7 @@
 name: ml-for-programmers
 channels:
-  - fastai
-  - pytorch
+  # - fastai
+  # - pytorch
   - conda-forge
   - defaults
   - mhoelzl
@@ -28,10 +28,10 @@ dependencies:
   # - xgboost
   # - catboost
   # - lightgbm
-  - cudatoolkit>=11
-  - pytorch>=1.6
-  - fastai>=2.2  # activate fastai channel above!
-  - fastbook
+  # - cudatoolkit>=11
+  # - pytorch>=1.6
+  # - fastai>=2.2  # activate fastai channel above!
+  # - fastbook
   # - tensorflow
   # - keras
   # - spacy
