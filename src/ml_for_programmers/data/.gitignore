@@ -4,5 +4,8 @@
 !.gitignore
 !raw
 !external
+!generated
+!generators
+!generators/*
 !preprocessed
 !interim
