@@ -3,7 +3,9 @@ from sklearn.datasets import fetch_openml
 
 # %%
 mnist = (
-    globals()["mnist"] if "mnist" in globals() else fetch_openml("mnist_784", version=1)
+    globals()["mnist"]
+    if "mnist" in globals()
+    else fetch_openml("mnist_784", version=1)
 )
 
 # %%
@@ -158,7 +160,9 @@ f1_score(lucky7_test, lucky7_predict)
 def print_scores(predictions):
     accuracy = accuracy_score(lucky7_test, predictions) * 100
     balanced_accuracy = balanced_accuracy_score(lucky7_test, predictions) * 100
-    precision = precision_score(lucky7_test, predictions, zero_division=0) * 100
+    precision = (
+        precision_score(lucky7_test, predictions, zero_division=0) * 100
+    )
     recall = recall_score(lucky7_test, predictions, zero_division=0) * 100
     f1 = f1_score(lucky7_test, predictions, zero_division=0) * 100
     print(f"Accuracy:          {accuracy:.1f}%")
@@ -242,7 +246,9 @@ pred_rf = rf_clf.predict(x_test)
 
 # %%
 def print_scores(predictions):
-    print(f"Accuracy:          {accuracy_score(y_test, predictions) * 100:.1f}%")
+    print(
+        f"Accuracy:          {accuracy_score(y_test, predictions) * 100:.1f}%"
+    )
     print(
         f"Balanced Accuracy: {balanced_accuracy_score(y_test, predictions) * 100:.1f}%"
     )
