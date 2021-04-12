@@ -84,6 +84,6 @@ rng.choice(arr, size=100, replace=False)
 rng.normal(size=(3, 5))
 
 # %%
-rng.normal??
+# rng.normal??
 
 # %%
