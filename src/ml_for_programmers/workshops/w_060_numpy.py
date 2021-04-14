@@ -79,21 +79,6 @@ import numpy as np
 # %%
 
 # %% [markdown]
-# # Systems of Equations
-# 
-# Solve the following system of equations:
-# 
-# $x_1 - x_2 + 2x_3 = 6$
-# 
-# $2x_1 + 3x_2 + 2x_3 = 8$
-# 
-# $3x_1 + 2x_2 + x_3 = 8$
-
-# %%
-
-# %% [markdown]
-# # Creating NumPy Arrays (Part 2)
-# 
 # Create the following NumPy arrays:
 # 
 # ```python
