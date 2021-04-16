@@ -1,0 +1,72 @@
+name: ml-for-programmers
+channels:
+  - fastai
+  - pytorch
+  - conda-forge
+  - defaults
+  - mhoelzl
+dependencies:
+  - python=3.8
+  - pip
+  # BASICS
+  - numpy
+  - scipy
+  - pandas
+  # - tqdm
+  # - click
+  - ipython
+  # VISUALIZATION
+  - matplotlib
+  - seaborn
+  # - altair
+  # - yellowbrick
+  # ML, STATS & DEEP LEARNING
+  # - statsmodels
+  - scikit-learn
+  # - sktime
+  # - tslearn
+  # - xgboost
+  # - catboost
+  # - lightgbm
+  - cudatoolkit>=11.2
+  - cudnn>=8
+  - pytorch>=1.7
+  - fastai=2.3  # activate fastai channel above!
+  # - fastbook
+  # - tensorflow
+  # - keras
+  # - spacy
+  # OTHER TOOLS
+  # - optuna
+  # - dask
+  # APPLICATIONS
+  - streamlit
+  - pydantic
+  - fastapi
+  - nbex
+  - pip:
+     - -e .  # install git checkout of ml-for-programmers in editable mode
+     # add here only pip-packages that are not available in conda/conda-forge! E.g.:
+     # - icecream
+     # - jax
+     # - numpyro
+     # - funsor
+     # - neptune-client
+     # - neptune-contrib
+
+  # DEVELOPMENT ONLY PACKAGES (could also be kept in a separate environment file)
+  - black
+  - ipykernel
+  - jupyter
+  # - jupyterlab
+  - pytest
+  - pytest-cov
+  - tox
+  - pre_commit
+  - nbdime
+  - nbstripout
+  - sphinx
+  - recommonmark
+  - rope
+  - setuptools
+  - rise
