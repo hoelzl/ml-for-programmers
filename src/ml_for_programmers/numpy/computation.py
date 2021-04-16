@@ -1,5 +1,10 @@
 # %%
+import math
+import operator
+
 import numpy as np
+from IPython.display import display
+from toolz import reduce
 
 # %% [markdown]
 # # Computation in NumPy
@@ -45,10 +50,10 @@ v1 = np.arange(4)
 v2 = np.ones(4)
 
 # %%
-v1 == v2
+v1 == v2  # noqa B015
 
 # %%
-v1 <= v2
+v1 <= v2  # noqa B015
 
 # %%
 # if v1 == v2: print("Done")
@@ -93,7 +98,7 @@ v1 ** 2
 2 ** v1
 
 # %%
-v1 > 5
+v1 > 5  # noqa B015
 
 # %% [markdown]
 # ## Minimum, Maximum, Sum, ...
@@ -394,7 +399,7 @@ arr
 arr[:, 1]
 
 # %%
-arr[:, 1] % 2 == 0
+arr[:, 1] % 2 == 0  # noqa B015
 
 # %%
 arr[arr[:, 1] % 2 == 0]
@@ -411,66 +416,83 @@ arr[arr[:, 1] % 2 == 1]
 # %%
 vec1 = rng.random(5)
 vec2 = rng.random(5)
+display(vec1)
+
 list1 = list(vec1)
 list2 = list(vec2)
+display(list1)
 
-
-# %%
-vec1
-
-
-# %%
-list1
-
+matrix = np.arange(6).reshape(2, 3)
+list_matrix = list(matrix)
+display(matrix)
+display(list_matrix)
 
 # %%
-np.sin(vec1)
-
-
-# %%
-np.sin(list1)
-
+vec1.sum()
 
 # %%
-import math
+# list1.sum()
 
-np.sin(math.pi)
+# %%
+reduce(operator.add, list1, 0)
 
+# %%
+reduce(operator.add, vec1, 0)
 
 # %%
 np.sum(vec1)
 
-
 # %%
 np.sum(list1)
 
+# %%
+np.sum(matrix)
+
+# %%
+np.sum(list_matrix)
+
+# %%
+np.sum(123)
+
+# %%
+np.sum(list_matrix, axis=0)
+
+# %%
+np.sin(vec1)
+
+# %%
+np.sin(list1)
+
+# %%
+np.sin(matrix)
+
+# %%
+np.sin(list_matrix)
+
+# %%
+np.sin(math.pi)
 
 # %%
 np.mean(vec1)
 
-
 # %%
 np.median(vec1)
-
 
 # %%
 np.std(vec1)
 
-
 # %%
 np.greater(vec1, vec2)
 
-
 # %%
 np.greater(list1, list2)
-
 
 # %%
 np.greater(vec1, list2)
 
 # %%
-print(vec1)
-print(vec2)
+display(vec1)
+display(vec2)
 
 # %%
 np.maximum(vec1, vec2)
@@ -514,18 +536,19 @@ np.maximum(list1, vec2)
 # - The array with lower rank is treated as if it has rank 1 for the missing
 #   axes, the missing axes are appended on the left
 
-# %%
-def tensor(shape):
-    from operator import mul
-    from functools import reduce
-
-    size = reduce(mul, shape, 1)
-    return np.arange(1, size + 1).reshape(*shape)
-
 
 # %%
 def ones(shape):
     return np.ones(shape, dtype=np.int32)
+
+
+# %%
+def tensor(shape):
+    from functools import reduce
+    from operator import mul
+
+    size = reduce(mul, shape, 1)
+    return np.arange(1, size + 1).reshape(*shape)
 
 
 # %%
@@ -618,8 +641,6 @@ print("Shape:", tmp4.shape)
 tmp4
 
 # %%
-from IPython.display import display
-
 display(tmp3)
 display(tmp4)
 
