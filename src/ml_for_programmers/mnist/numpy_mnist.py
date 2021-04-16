@@ -46,14 +46,6 @@ x_train.shape, x_test.shape
 y_train.shape, y_test.shape
 
 # %%
-def print_scores(predictions):
-    accuracy = accuracy_score(y_test, predictions) * 100
-    balanced_accuracy = balanced_accuracy_score(y_test, predictions) * 100
-    print(f"Accuracy:          {accuracy:.1f}%")
-    print(f"Balanced Accuracy: {balanced_accuracy:.1f}%")
-
-
-# %%
 x_mean = x_train.mean(axis=0)
 
 # %%
@@ -82,7 +74,7 @@ if session.is_interactive:
 
 # %%
 if session.is_interactive:
-    plt.imshow(x_test[0], cmap="binary");
+    plt.imshow(x_test[0], cmap="binary")
 
 # %%
 np.set_printoptions(precision=2)
@@ -113,6 +105,7 @@ def compute_single_numpy_prediction(img):
     diffs = ideal_digits - img
     return (diffs * diffs).sum(axis=(1, 2)).argmin()
 
+
 # %%
 compute_single_numpy_prediction(x_test[0])
 
@@ -128,14 +121,34 @@ def compute_numpy_predictions(imgs):
     diffs = ideal_digits - np.expand_dims(imgs, axis=1)
     return (diffs * diffs).sum(axis=(2, 3)).argmin(axis=1)
 
+
 # %%
 pred_numpy = compute_numpy_predictions(x_test)
 
 # %%
 pred_numpy.shape
 
+
+# %%
+def print_scores(predictions):
+    accuracy = accuracy_score(y_test, predictions) * 100
+    balanced_accuracy = balanced_accuracy_score(y_test, predictions) * 100
+    print(f"Accuracy:          {accuracy:.1f}%")
+    print(f"Balanced Accuracy: {balanced_accuracy:.1f}%")
+    print()
+    for i in range(10):
+        idx = y_test == i
+        accuracy_i = accuracy_score(y_test[idx], predictions[idx]) * 100
+        print(f"Accuracy for {i}:    {accuracy_i:.1f}%")
+    print()
+
+
 # %%
 print_scores(pred_numpy)
+
+# %%
+if session.is_interactive:
+    plt.imshow(x_mean, cmap="binary")
 
 # %%
 rf_clf = RandomForestClassifier()
