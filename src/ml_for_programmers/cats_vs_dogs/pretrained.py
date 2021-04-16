@@ -47,6 +47,7 @@ def create_dataloaders() -> DataLoaders:
         path,
         get_image_files(path),
         valid_pct=0.2,
+        batch_size=8,
         seed=42,
         label_func=is_cat,
         item_tfms=Resize(224),

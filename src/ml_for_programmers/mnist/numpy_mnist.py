@@ -72,6 +72,7 @@ if session.is_interactive:
     for i in range(10):
         ax.reshape(10)[i].imshow(ideal_digits[i], cmap="binary")
 
+
 # %%
 if session.is_interactive:
     plt.imshow(x_test[0], cmap="binary")
@@ -83,8 +84,11 @@ np.set_printoptions(precision=2)
 x_test[0, 3:12, 3:12]
 
 # %%
-diff = ideal_digits[0] - x_test[0]
+diff = ideal_digits[8] - x_test[0]
 diff[3:12, 3:12]
+
+# %%
+plt.imshow(diff)
 
 # %%
 (diff * diff)[3:12, 3:12]
@@ -98,6 +102,7 @@ diffs.shape
 
 # %%
 errors = (diffs * diffs).sum(axis=(1, 2))
+print(errors.shape)
 errors.argmin()
 
 # %%

@@ -41,6 +41,9 @@ def linear_salaries_for_ages(
 
 # %%
 ages = rng.uniform(low=20, high=65, size=5_000)
+ages[:20]
+
+# %%
 linear_salaries = generate_linear_relation(
     ages, slope=550, offset=20_000, random_scale=500
 )
@@ -69,14 +72,14 @@ def simple_stepwise_conditions_for_ages(ages):
 
 # %%
 def simple_stepwise_values_for_ages(ages):
-    np.ones_like(ages)
+    # np.ones_like(ages)
     return [20_000, 40_000, 60_000]
 
 
 # %%
 def simple_stepwise_salaries_for_ages(ages):
     return np.select(
-        simple_stepwise_conditions_for_ages(ages), simple_stepwise_values_for_ages(ages)
+        simple_stepwise_conditions_for_ages(ages), [20_000, 40_000, 60_000]
     )
 
 
@@ -236,8 +239,6 @@ if session.is_interactive:
 
 # %%
 if session.is_interactive:
-    fig, ax = plt.subplots()
-
     sns.scatterplot(x=ages, y=linear_salaries, alpha=0.15)
     sns.scatterplot(x=ages, y=stepwise_salaries, alpha=0.15)
     sns.scatterplot(x=ages, y=interpolated_salaries, alpha=0.15)
@@ -252,6 +253,9 @@ stepwise_salaries_df = pd.DataFrame(
 interpolated_salaries_df = pd.DataFrame(
     {"age": np.round(ages), "salary": np.round(interpolated_salaries)}
 )
+
+# %%
+linear_salaries_df
 
 # %%
 sns.scatterplot(data=linear_salaries_df, x="age", y="salary", alpha=0.25)
@@ -305,8 +309,8 @@ if session.is_interactive:
         vars=["age", "salary", "edu_lvl"],
         hue="edu_lvl",
         diag_kind="hist",
-        height=2,
-        aspect=2,
+        height=3,
+        aspect=1,
     )
 
 
