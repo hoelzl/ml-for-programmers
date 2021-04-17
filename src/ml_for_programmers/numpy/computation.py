@@ -408,7 +408,7 @@ arr[arr[:, 1] % 2 == 0]
 arr[arr[:, 1] % 2 == 1]
 
 # %% [markdown]
-# ## Universal NumPy Operations
+# ## Universal NumPy Functions
 #
 # NumPy offers a wealth of universal functions that work on NumPy arrays, lists,
 # and often numbers
@@ -423,7 +423,7 @@ list2 = list(vec2)
 display(list1)
 
 matrix = np.arange(6).reshape(2, 3)
-list_matrix = list(matrix)
+list_matrix = [[0, 1, 2], [3, 4, 5]]
 display(matrix)
 display(list_matrix)
 
@@ -511,11 +511,27 @@ np.maximum(list1, vec2)
 # %% [markdown]
 #
 # ## Broadcasting (Part 2)
-#
-# Usually: operations done on element by element basis, both arguments have the
-# same shape: `arr * arr`.
-#
-# But: `3 * arr`
+
+# %%
+arr = np.arange(16).reshape(2, 2, 4)
+print(f"arr.shape: {arr.shape}")
+display(arr)
+display(arr * arr)
+display(3 * arr)
+
+# %%
+vec1 = np.arange(3)
+display(vec1)
+print(f"vec1.shape: {vec1.shape}")
+print(f"arr.shape:  {arr.shape}")
+# arr * vec1
+
+# %%
+vec2 = np.arange(4)
+display(vec2)
+print(f"vec2.shape: {vec2.shape}")
+print(f"arr.shape:  {arr.shape}")
+arr * vec2
 
 # %% [markdown]
 #
@@ -571,6 +587,9 @@ ones((1, 3))
 
 # %%
 np.concatenate([ones((1, 3))] * 2, axis=0)
+
+# %%
+ones((1, 3)) + tensor((2, 1))
 
 # %%
 tensor((1, 3)) + ones((2, 1))
