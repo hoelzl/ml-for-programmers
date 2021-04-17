@@ -515,9 +515,13 @@ np.maximum(list1, vec2)
 # %%
 arr = np.arange(16).reshape(2, 2, 4)
 print(f"arr.shape: {arr.shape}")
-display(arr)
-display(arr * arr)
-display(3 * arr)
+arr
+
+# %%
+arr * arr
+
+# %%
+3 * arr
 
 # %%
 vec1 = np.arange(3)
@@ -528,6 +532,7 @@ print(f"arr.shape:  {arr.shape}")
 
 # %%
 vec2 = np.arange(4)
+display(arr)
 display(vec2)
 print(f"vec2.shape: {vec2.shape}")
 print(f"arr.shape:  {arr.shape}")
