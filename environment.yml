@@ -38,6 +38,7 @@ dependencies:
   # OTHER TOOLS
   # - optuna
   # - dask
+  - openpyxl
   # APPLICATIONS
   - streamlit
   - pydantic
