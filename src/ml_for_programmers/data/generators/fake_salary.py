@@ -258,9 +258,10 @@ interpolated_salaries_df = pd.DataFrame(
 linear_salaries_df
 
 # %%
-sns.scatterplot(data=linear_salaries_df, x="age", y="salary", alpha=0.25)
-sns.scatterplot(data=stepwise_salaries_df, x="age", y="salary", alpha=0.25)
-sns.scatterplot(data=interpolated_salaries_df, x="age", y="salary", alpha=0.25)
+if session.is_interactive:
+    sns.scatterplot(data=linear_salaries_df, x="age", y="salary", alpha=0.25)
+    sns.scatterplot(data=stepwise_salaries_df, x="age", y="salary", alpha=0.25)
+    sns.scatterplot(data=interpolated_salaries_df, x="age", y="salary", alpha=0.25)
 
 # %%
 linear_salaries_df.to_csv(config.data_dir_path / "generated/linear_salaries.csv")
@@ -291,9 +292,10 @@ multivar_salaries_df = pd.DataFrame(
 )
 
 # %%
-sns.scatterplot(
-    data=multivar_salaries_df, x="age", y="salary", hue="edu_lvl", alpha=0.25
-)
+if session.is_interactive:
+    sns.scatterplot(
+        data=multivar_salaries_df, x="age", y="salary", hue="edu_lvl", alpha=0.25
+    )
 
 # %%
 multivar_salaries_df.to_csv(config.data_dir_path / "generated/multivar_salaries.csv")
