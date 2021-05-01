@@ -188,10 +188,13 @@ print(f1_score(y_test, y_lr_pred))
 compute_plot_grid_coords(x, 2)
 
 # %%
+lr_clf.predict(compute_plot_grid_coords(x, 2))
+
+# %%
 lr_clf.decision_function(compute_plot_grid_coords(x, 2))
 
 # %%
-lr_clf.predict(compute_plot_grid_coords(x, 2))
+lr_clf.decision_function(compute_plot_grid_coords(x, 2)) > -3  # noqa
 
 # %%
 lr_clf.predict_proba(compute_plot_grid_coords(x, 2))
@@ -201,6 +204,7 @@ lr_clf.predict_proba(compute_plot_grid_coords(x, 2))[:, 1]
 
 # %%
 grid_x, grid_y = compute_plot_grid(x, 0.02)
+grid_x.shape, grid_y.shape
 
 # %%
 z = lr_clf.decision_function(compute_plot_grid_coords(x, 0.02)).reshape(grid_x.shape)
