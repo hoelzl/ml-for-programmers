@@ -31,6 +31,8 @@ dependencies:
   - cudatoolkit=11.0
   - pytorch=1.7
   - fastai=2.3  # activate fastai channel above!
+  - pytorch-model-summary
+  - skorch
   # - fastbook
   # - tensorflow
   # - keras
