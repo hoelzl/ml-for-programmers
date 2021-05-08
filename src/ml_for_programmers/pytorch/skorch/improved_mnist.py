@@ -5,6 +5,7 @@
 # Skorch is a library for PyTorch that simplifies training in a Scikit Learn
 
 # %%
+import joblib
 import numpy as np
 import torch
 import torch.nn as nn
@@ -22,6 +23,13 @@ from sklearn.model_selection import RandomizedSearchCV, train_test_split
 from skorch import NeuralNetClassifier
 from skorch.callbacks import LRScheduler
 from torch.optim.lr_scheduler import CyclicLR
+
+from ml_for_programmers.config import Config
+
+# %%
+config = Config()
+model_path = config.data_dir_path / "models"
+model_path.mkdir(parents=True, exist_ok=True)
 
 # %%
 np.set_printoptions(precision=1)
@@ -142,15 +150,65 @@ search_clf = NeuralNetClassifier(
 # %%
 search = RandomizedSearchCV(
     search_clf,
-    param_distributions={
-        "module__kernels_1": [5, 10, 20],
-        "module__kernels_2": [15, 60, 120],
-        "module__hidden": [20, 60, 120, 360],
-        "callbacks__lr_scheduler__base_lr": [0.1, 0.05, 0.01],
-    },
+    n_iter=25,
+    param_distributions=[
+        {
+            "module__kernels_1": [5, 10, 20],
+            "module__kernels_2": [15, 30, 60],
+            "module__hidden": [60, 120, 360],
+            "callbacks__lr_scheduler__base_lr": [0.25, 0.1, 0.05],
+            "callbacks__lr_scheduler__max_lr": [0.5],
+        },
+        {
+            "module__kernels_1": [30, 60],
+            "module__kernels_2": [60, 120, 240],
+            "module__hidden": [360, 720],
+            "callbacks__lr_scheduler__base_lr": [0.25, 0.1, 0.05],
+            "callbacks__lr_scheduler__max_lr": [0.5],
+        },
+        {
+            "module__kernels_1": [5, 10, 20],
+            "module__kernels_2": [15, 30, 60],
+            "module__hidden": [60, 120, 360],
+            "callbacks__lr_scheduler__base_lr": [0.1, 0.05],
+            "callbacks__lr_scheduler__max_lr": [0.25, 0.15],
+        },
+        {
+            "module__kernels_1": [30, 60],
+            "module__kernels_2": [60, 120, 240],
+            "module__hidden": [360, 720],
+            "callbacks__lr_scheduler__base_lr": [0.1, 0.05],
+            "callbacks__lr_scheduler__max_lr": [0.25, 0.15],
+        },
+    ],
 )
 
 # %%
 search.fit(x_train, y_train)
+
+# %%
+search.best_estimator_, search.best_params_
+
+
+# %%
+y_pred_search = search.predict(x_test)
+
+# %%
+print_scores(y_test, y_pred_search)
+
+# %%
+model_file = model_path / "mnist_conv_randomized_search.pkl"
+
+# %%
+joblib.dump(search, model_file)
+
+# %%
+search_loaded = joblib.load(model_file)
+
+# %%
+y_pred_loaded = search_loaded.predict(x_test)
+
+# %%
+print_scores(y_test, y_pred_loaded)
 
 # %%
