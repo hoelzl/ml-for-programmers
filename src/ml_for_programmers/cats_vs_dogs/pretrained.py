@@ -51,6 +51,7 @@ def create_dataloaders() -> DataLoaders:
         seed=42,
         label_func=is_cat,
         item_tfms=Resize(224),
+        device="cuda"
     )
     return dls
 
