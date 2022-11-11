@@ -13,12 +13,12 @@
 #     name: python3
 # ---
 
-# %% [markdown] slideshow={"slide_type": "slide"}
+# %% [markdown] tags=["slide"]
 # <h1 style="text-align:center;">Machine Learning for Programmers</h1>
 # <h2 style="text-align:center;">Setup (on Linux)</h2>
 # <h3 style="text-align:center;">Dr. Matthias Hölzl</h3>
 
-# %% [markdown] slideshow={"slide_type": "slide"}
+# %% [markdown] tags=["slide"]
 # # Code for this Course
 #
 # `https://github.com/hoelzl/ml-for-programmers`
@@ -28,7 +28,7 @@
 # - `master` branch
 # - `starter-kit-v1` tag
 
-# %% [markdown] slideshow={"slide_type": "slide"}
+# %% [markdown] tags=["slide"]
 # # Required Packages
 #
 # - numpy
@@ -40,17 +40,17 @@
 # - pytorch
 # - fastai
 
-# %% [markdown] slideshow={"slide_type": "slide"}
+# %% [markdown] tags=["slide"]
 # <h1 style="text-align:center;">Setting up your environment</h1>
 #
 
-# %% [markdown] slideshow={"slide_type": "slide"}
+# %% [markdown] tags=["slide"]
 # # Pip Install ...?
 #
 # - May or may not be what you want...
 # - Use virtual environment(s)
 
-# %% [markdown] slideshow={"slide_type": "slide"}
+# %% [markdown] tags=["slide"]
 # # Hardware and OS
 #
 # - Traditional ML: OS does not matter
@@ -60,16 +60,16 @@
 #   - Only CUDA is well supported by all frameworks
 #   - This may change over time (ROCm 4.0 is in beta for PyTorch 1.8)
 
-# %% [markdown] slideshow={"slide_type": "subslide"}
+# %% [markdown] tags=["subslide"]
 # # If you use Windows
 #
 # - Cloud instances work well
 # - Don't use a local VM
-#   - Need to configure GPU passthrough 
+#   - Need to configure GPU passthrough
 # - WSL2 works amazingly well...
 #   - ... but right now only with the Insider Program Dev Channel
 
-# %% [markdown] slideshow={"slide_type": "slide"}
+# %% [markdown] tags=["slide"]
 # # Installation Options
 #
 # - `pip` + manual installation of libraries
@@ -78,19 +78,19 @@
 #   - `conda` for basics,
 #   - `pip` for *everything else*
 
-# %% [markdown] slideshow={"slide_type": "subslide"}
+# %% [markdown] tags=["subslide"]
 # # Not Recommended
 #
 # - `poetry` etc.
 # - Truly mixed `conda` and `pip` install
 
-# %% [markdown] slideshow={"slide_type": "slide"}
+# %% [markdown] tags=["slide"]
 # # Installing Conda
 #
 # - Download Miniconda from <https://docs.conda.io/en/latest/miniconda.html#linux-installers>
 # - Follow the instructions on <https://docs.conda.io/projects/conda/en/latest/user-guide/install/linux.html>
 
-# %% [markdown] slideshow={"slide_type": "slide"}
+# %% [markdown] tags=["slide"]
 # # Setting up a Conda Environment
 #
 # - Download the code from GitHub to get the `environment.yml` file
@@ -98,5 +98,5 @@
 # - Don't update with `conda update --all` (or similar)
 # - Use `conda env update --file environment.yml --prune` instead
 
-# %% [markdown] slideshow={"slide_type": "slide"}
+# %% [markdown] tags=["slide"]
 #
